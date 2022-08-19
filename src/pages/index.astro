@@ -2,13 +2,16 @@
 import Track from "../components/Track.astro";
 import "../styles/globals.css";
 import type { TrackResponse } from "./tracks";
+import type { ArtistResponse } from "./artists";
+import Artist from "../components/Artist.astro";
 
 const URL = import.meta.env.URL;
 
 const tracksResponse = await fetch(`${URL}/tracks`);
-
-console.log(tracksResponse)
 const tracks = await tracksResponse.json();
+
+const artistResponse = await fetch(`${URL}/artists`);
+const artists = await artistResponse.json();
 ---
 
 <html lang="en">
@@ -19,11 +22,15 @@ const tracks = await tracksResponse.json();
 		<title>nexxel • spotify</title>
 	</head>
 
-	<body class="items-center mx-4 md:flex md:flex-col md:mx-auto md:w-4/5 lg:w-2/5">
+	<body
+		class="items-center mx-4 md:flex md:flex-col md:mx-auto md:w-4/5 lg:w-2/5"
+	>
 		<h1 class="text-3xl pb-10 text-center">nexxel • spotify</h1>
 
 		<h2 class="text-2xl pb-4">Top Tracks</h2>
-		<div class="flex flex-col rounded-sm border-t border-l border-r border-t-neutral-600 border-l-neutral-600 border-r-neutral-600">
+		<div
+			class="flex flex-col rounded-sm border-t border-l border-r border-t-neutral-600 border-l-neutral-600 border-r-neutral-600"
+		>
 			{
 				tracks.tracks.map((item: TrackResponse) => (
 					<Track
@@ -37,5 +44,21 @@ const tracks = await tracksResponse.json();
 		</div>
 
 		<div class="pb-10" />
+
+		<h2 class="text-2xl pb-4">Top Artists</h2>
+		<div class="flex flex-col rounded-sm border-t border-l border-r border-t-neutral-600 border-l-neutral-600 border-r-neutral-600">
+			{
+				artists.artists.map((item: ArtistResponse) => (
+					<Artist
+						name={item.name}
+						followers={item.followers}
+						img={item.img}
+						url={item.url}
+					/>
+				))
+			}
+		</div>
+
+		<div class="pb-10"></div>
 	</body>
 </html>

@@ -1,6 +1,13 @@
 import { topArtists } from "../lib/spotify";
 import type { SpotifyArtist } from "../lib/spotify";
 
+export type ArtistResponse = {
+  name: string;
+  url: string;
+  followers: string;
+  img: { url: string };
+};
+
 export const get = async () => {
   const response = await topArtists();
   const { items } = await response.json();
