@@ -14,13 +14,24 @@ const tracks = await tracksResponse.json();
 		<meta name="generator" content={Astro.generator} />
 		<title>nexxel • spotify</title>
 	</head>
-	<body>
-		<h1>nexxel • spotify</h1>
 
-		<code>
+	<body class="items-center mx-4 md:flex md:flex-col md:mx-auto md:w-4/5 lg:w-2/5">
+		<h1 class="text-3xl pb-10 text-center">nexxel • spotify</h1>
+
+		<h2 class="text-2xl pb-4">Top Tracks</h2>
+		<div class="flex flex-col gap-2 rounded-sm border-t border-l border-r border-t-neutral-600 border-l-neutral-600 border-r-neutral-600">
 			{
-				tracks.tracks.map((item: TrackResponse) => <Track title={item.title} /> )
+				tracks.tracks.map((item: TrackResponse) => (
+					<Track
+						title={item.title}
+						artist={item.artist}
+						url={item.url}
+						img={item.img}
+					/>
+				))
 			}
-		</code>
+		</div>
+
+		<div class="pb-10" />
 	</body>
 </html>
