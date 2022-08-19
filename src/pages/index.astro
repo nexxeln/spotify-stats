@@ -21,10 +21,23 @@ const artists = await artistResponse.json();
 
 <html lang="en">
 	<head>
+		<title>nexxel • spotify</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>nexxel • spotify</title>
+		<meta name="robots" content="follow, index" />
+		<meta content="Spotify stats for nexxel" name="description" />
+		<meta property="og:url" content={"https://s.nxl.sh/"} />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="nexxel's spotify stats" />
+		<meta name="theme-color" content="#fabec0" />
+		<meta property="og:description" content="Spotify stats for nexxel" />
+		<meta property="og:title" content="nexxel • spotify" />
+		<meta property="og:image" content="/banner.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="nexxel • spotify" />
+		<meta name="twitter:description" content="Spotify stats for nexxel" />
+		<meta name="twitter:image" content="/banner.png" />
 	</head>
 
 	<body
@@ -34,7 +47,7 @@ const artists = await artistResponse.json();
 			nexxel • spotify
 		</h1>
 		<p class="text-neutral-300 text-center">spotify stats for nexxel</p>
-		
+
 		<div class="pb-10"></div>
 
 		<h2 class="text-2xl pb-4 font-semibold text-center">Now Playing</h2>
@@ -78,7 +91,7 @@ const artists = await artistResponse.json();
 						url={item.url}
 						img={item.img}
 					/>
-				))
+				));
 			}
 		</div>
 
@@ -96,7 +109,7 @@ const artists = await artistResponse.json();
 						img={item.img}
 						url={item.url}
 					/>
-				))
+				));
 			}
 		</div>
 
@@ -105,7 +118,7 @@ const artists = await artistResponse.json();
 				href="https://astro.build/"
 				target="_blank"
 				rel="noreferrer noopener"
-				class="text-neutral-200  hover:text-neutral-50 transition-colors duration-300"
+				class="text-neutral-200 hover:text-neutral-50 transition-colors duration-300"
 				>Astro
 			</a> and is hosted on <a
 				href="https://vercel.com/"
@@ -118,10 +131,10 @@ const artists = await artistResponse.json();
 				href="https://github.com/nexxeln/spotify-stats/"
 				target="_blank"
 				rel="noreferrer noopener"
-				class="text-neutral-200  hover:text-neutral-50 transition-colors duration-300"
+				class="text-neutral-200 hover:text-neutral-50 transition-colors duration-300"
 				>GitHub
 			</a>
 		</p>
-		<div class="pb-10" />
+		<div class="pb-10"></div>
 	</body>
 </html>
