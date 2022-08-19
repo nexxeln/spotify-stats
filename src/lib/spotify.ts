@@ -1,3 +1,16 @@
+type SpotifyTrack = {
+  name: string;
+  artists: { name: string }[];
+  external_urls: { spotify: string };
+};
+
+type SpotifyArtist = {
+  name: string;
+  images: { url: string }[];
+  external_urls: { spotify: string };
+  followers: { total: number };
+};
+
 const getAccessToken = async () => {
   const refresh_token = import.meta.env.SPOTIFY_REFRESH_TOKEN;
   const clientId = import.meta.env.SPOTIFY_CLIENT_ID;
@@ -19,6 +32,16 @@ const getAccessToken = async () => {
   });
 
   return response.json();
+};
+
+const nowPlaying = async () => {
+  const { access_token } = await getAccessToken();
+
+  return fetch("https://api.spotify.com/v1/me/player/currently-playing", {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  });
 };
 
 const topTracks = async () => {
@@ -47,18 +70,5 @@ const topArtists = async () => {
   );
 };
 
-type SpotifyTrack = {
-  name: string;
-  artists: { name: string }[];
-  external_urls: { spotify: string };
-};
-
-type SpotifyArtist = {
-  name: string;
-  images: { url: string }[];
-  external_urls: { spotify: string };
-  followers: { total: number };
-};
-
-export { topTracks, topArtists };
+export { nowPlaying, topTracks, topArtists };
 export type { SpotifyTrack, SpotifyArtist };
