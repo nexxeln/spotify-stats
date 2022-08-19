@@ -1,6 +1,13 @@
 import { topTracks } from "../lib/spotify";
 import type { SpotifyTrack } from "../lib/spotify";
 
+export type TrackResponse = {
+  artist: string;
+  url: string;
+  title: string;
+  img: string;
+};
+
 export const get = async () => {
   const response = await topTracks();
   const { items } = await response.json();
@@ -9,6 +16,7 @@ export const get = async () => {
     artist: track.artists.map((_artist) => _artist.name).join(", "),
     url: track.external_urls.spotify,
     title: track.name,
+    img: track.album.images[0].url,
   }));
 
   return new Response(JSON.stringify({ tracks }), {
