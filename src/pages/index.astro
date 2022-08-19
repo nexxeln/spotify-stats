@@ -30,12 +30,21 @@ const artists = await artistResponse.json();
 	<body
 		class="items-center mx-4 md:flex md:flex-col md:mx-auto md:w-4/5 lg:w-2/5"
 	>
-		<h1 class="text-3xl pb-10 text-center">nexxel • spotify</h1>
+		<h1 class="text-2xl pt-2 pb-1 text-center font-bold">
+			nexxel • spotify
+		</h1>
+		<p class="text-neutral-300 text-center">spotify stats for nexxel</p>
+		
+		<div class="pb-10"></div>
 
-		<h2 class="text-2xl pb-4">Now Playing</h2>
+		<h2 class="text-2xl pb-4 font-semibold text-center">Now Playing</h2>
 		{
 			nowPlayingTrack.isPlaying ? (
-				<a href={nowPlayingTrack.url}>
+				<a
+					href={nowPlayingTrack.url}
+					target="_blank"
+					rel="noreferrer noopener"
+				>
 					<div class="bg-zinc-900 w-96 p-4 rounded-sm border border-neutral-600 hover:bg-zinc-800 transition-colors duration-200">
 						<div class="flex flex-col gap-4">
 							<img src={nowPlayingTrack.img} />
@@ -57,7 +66,7 @@ const artists = await artistResponse.json();
 
 		<div class="pb-10"></div>
 
-		<h2 class="text-2xl pb-4">Top Tracks</h2>
+		<h2 class="text-2xl pb-4 font-semibold text-center">Top Tracks</h2>
 		<div
 			class="flex flex-col rounded-sm border-t border-l border-r border-t-neutral-600 border-l-neutral-600 border-r-neutral-600"
 		>
@@ -75,7 +84,7 @@ const artists = await artistResponse.json();
 
 		<div class="pb-10"></div>
 
-		<h2 class="text-2xl pb-4">Top Artists</h2>
+		<h2 class="text-2xl pb-4 font-semibold text-center">Top Artists</h2>
 		<div
 			class="flex flex-col rounded-sm border-t border-l border-r border-t-neutral-600 border-l-neutral-600 border-r-neutral-600"
 		>
@@ -91,6 +100,28 @@ const artists = await artistResponse.json();
 			}
 		</div>
 
-		<div class="pb-10"></div>
+		<p class="pt-6 text-sm text-neutral-400 w-80">
+			This website is made using <a
+				href="https://astro.build/"
+				target="_blank"
+				rel="noreferrer noopener"
+				class="text-neutral-200  hover:text-neutral-50 transition-colors duration-300"
+				>Astro
+			</a> and is hosted on <a
+				href="https://vercel.com/"
+				target="_blank"
+				rel="noreferrer noopener"
+				class="text-neutral-200 hover:text-neutral-50 transition-colors duration-300"
+				>Vercel
+			</a>. You can find the code on
+			<a
+				href="https://github.com/nexxeln/spotify-stats/"
+				target="_blank"
+				rel="noreferrer noopener"
+				class="text-neutral-200  hover:text-neutral-50 transition-colors duration-300"
+				>GitHub
+			</a>
+		</p>
+		<div class="pb-10" />
 	</body>
 </html>

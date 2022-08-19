@@ -7,14 +7,17 @@ const { name, followers, img, url } = Astro.props as ArtistResponse;
 <div
     class="flex flex-col bg-zinc-900 hover:bg-zinc-800 transition-colors duration-200 w-full p-3 border-b border-b-neutral-600 md:w-96"
 >
-    <a href={url} class="">
+    <a href={url} target="_blank" rel="noreferrer noopener">
         <div class="flex gap-4 items-center">
             <img width={70} height={70} src={img.url} alt={`Picture of ${name}`}
             />
 
             <div>
                 <p class="text-lg font-semibold">{name}</p>
-                <p>{followers} followers</p>
+                <p class="text-neutral-300">
+                    {followers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                    followers
+                </p>
             </div>
         </div>
     </a>
