@@ -3,7 +3,11 @@ import Track from "../components/Track.astro";
 import "../styles/globals.css";
 import type { TrackResponse } from "./tracks";
 
-const tracksResponse = await fetch("http://localhost:3000/tracks");
+const URL = import.meta.env.URL;
+
+const tracksResponse = await fetch(`${import.meta.env.URL}/tracks`);
+
+console.log(tracksResponse)
 const tracks = await tracksResponse.json();
 ---
 
