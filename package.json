@@ -12,6 +12,7 @@
   "devDependencies": {
     "@astrojs/tailwind": "^1.0.0",
     "@astrojs/vercel": "^1.0.0",
+    "@types/node": "^18.7.6",
     "astro": "^1.0.6"
   }
 }

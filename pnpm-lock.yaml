@@ -3,11 +3,13 @@ lockfileVersion: 5.4
 specifiers:
   '@astrojs/tailwind': ^1.0.0
   '@astrojs/vercel': ^1.0.0
+  '@types/node': ^18.7.6
   astro: ^1.0.6
 
 devDependencies:
   '@astrojs/tailwind': 1.0.0
   '@astrojs/vercel': 1.0.0
+  '@types/node': 18.7.6
   astro: 1.0.6
 
 packages:
@@ -543,6 +545,10 @@ packages:
     resolution: {integrity: sha512-3TGCfOcy8R8mMQ4CNSNOe3PG66HttvjcLzCoOpvXvDtfWOTi+uT/rxeOKm/qEwbM4SNe1O/PjdiBK2YcTjU4OQ==}
     dependencies:
       '@types/unist': 2.0.6
+    dev: true
+
+  /@types/node/18.7.6:
+    resolution: {integrity: sha512-EdxgKRXgYsNITy5mjjXjVE/CS8YENSdhiagGrLqjG0pvA2owgJ6i4l7wy/PFZGC0B1/H20lWKN7ONVDNYDZm7A==}
     dev: true
 
   /@types/parse5/6.0.3:
