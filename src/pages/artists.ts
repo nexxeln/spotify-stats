@@ -5,7 +5,7 @@ export const get = async () => {
   const response = await topArtists();
   const { items } = await response.json();
 
-  const artists = items.slice(0, 5).map((artist: SpotifyArtist) => ({
+  const artists = items.slice(0, 10).map((artist: SpotifyArtist) => ({
     name: artist.name,
     url: artist.external_urls.spotify,
     followers: artist.followers.total,
