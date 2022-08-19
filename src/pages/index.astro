@@ -5,7 +5,7 @@ import type { TrackResponse } from "./tracks";
 
 const URL = import.meta.env.URL;
 
-const tracksResponse = await fetch(`${import.meta.env.URL}/tracks`);
+const tracksResponse = await fetch(`${URL}/tracks`);
 
 console.log(tracksResponse)
 const tracks = await tracksResponse.json();
