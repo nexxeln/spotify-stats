@@ -4,8 +4,13 @@ import "../styles/globals.css";
 import type { TrackResponse } from "./tracks";
 import type { ArtistResponse } from "./artists";
 import Artist from "../components/Artist.astro";
+import type { NowPlayingTrackResponse } from "./now";
 
 const URL = import.meta.env.URL;
+
+const nowPlayingResponse = await fetch(`${URL}/now`);
+const nowPlayingTrack =
+	(await nowPlayingResponse.json()) as NowPlayingTrackResponse;
 
 const tracksResponse = await fetch(`${URL}/tracks`);
 const tracks = await tracksResponse.json();
@@ -27,6 +32,31 @@ const artists = await artistResponse.json();
 	>
 		<h1 class="text-3xl pb-10 text-center">nexxel • spotify</h1>
 
+		<h2 class="text-2xl pb-4">Now Playing</h2>
+		{
+			nowPlayingTrack.isPlaying ? (
+				<a href={nowPlayingTrack.url}>
+					<div class="bg-zinc-900 w-96 p-4 rounded-sm border border-neutral-600 hover:bg-zinc-800 transition-colors duration-200">
+						<div class="flex flex-col gap-4">
+							<img src={nowPlayingTrack.img} />
+							<div>
+								<p class="text-lg font-semibold">
+									{nowPlayingTrack.title}
+								</p>
+								<p>{nowPlayingTrack.artist}</p>
+							</div>
+						</div>
+					</div>
+				</a>
+			) : (
+				<div class="bg-zinc-900 w-96 p-4 rounded-sm border border-neutral-600 hover:bg-zinc-800 transition-colors duration-200">
+					Not playing anything currently
+				</div>
+			)
+		}
+
+		<div class="pb-10"></div>
+
 		<h2 class="text-2xl pb-4">Top Tracks</h2>
 		<div
 			class="flex flex-col rounded-sm border-t border-l border-r border-t-neutral-600 border-l-neutral-600 border-r-neutral-600"
@@ -43,10 +73,12 @@ const artists = await artistResponse.json();
 			}
 		</div>
 
-		<div class="pb-10" />
+		<div class="pb-10"></div>
 
 		<h2 class="text-2xl pb-4">Top Artists</h2>
-		<div class="flex flex-col rounded-sm border-t border-l border-r border-t-neutral-600 border-l-neutral-600 border-r-neutral-600">
+		<div
+			class="flex flex-col rounded-sm border-t border-l border-r border-t-neutral-600 border-l-neutral-600 border-r-neutral-600"
+		>
 			{
 				artists.artists.map((item: ArtistResponse) => (
 					<Artist

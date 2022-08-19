@@ -1,5 +1,13 @@
 import { nowPlaying, SpotifyArtist } from "../lib/spotify";
 
+export type NowPlayingTrackResponse = {
+  isPlaying: boolean;
+  title: string;
+  artist: string;
+  url: string;
+  img: string;
+};
+
 export const get = async () => {
   const response = await nowPlaying();
 
@@ -21,7 +29,7 @@ export const get = async () => {
     img: item.album.images[0].url,
   };
 
-  return new Response(JSON.stringify({ track }), {
+  return new Response(JSON.stringify(track), {
     status: 200,
   });
 };
