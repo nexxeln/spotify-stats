@@ -41,7 +41,7 @@ const artists = await artistResponse.json();
 	</head>
 
 	<body
-		class="items-center mx-4 md:flex md:flex-col md:mx-auto md:w-4/5 lg:w-2/5"
+		class="flex flex-col w-4/5 mx-auto md:w-2/5"
 	>
 		<h1 class="text-2xl pt-2 pb-1 text-center font-bold">
 			nexxel • spotify
@@ -58,10 +58,10 @@ const artists = await artistResponse.json();
 					target="_blank"
 					rel="noreferrer noopener"
 				>
-					<div class="bg-zinc-900 w-96 p-4 rounded-sm border border-neutral-600 hover:bg-zinc-800 transition-colors duration-200">
-						<div class="flex flex-col gap-4">
-							<img src={nowPlayingTrack.img} />
-							<div>
+					<div class="bg-zinc-900 p-4 rounded-sm border border-neutral-600 hover:bg-zinc-800 transition-colors duration-200">
+						<div class="flex flex-col gap-4 items-center">
+							<img width={400} height={400} src={nowPlayingTrack.img} />
+							<div class="self-start md:self-center">
 								<p class="text-lg font-semibold">
 									{nowPlayingTrack.title}
 								</p>
